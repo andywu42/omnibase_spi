@@ -32,7 +32,7 @@ class ContractMeasurementContext(BaseModel):
 
     Attributes:
         schema_version: Wire-format version for forward compatibility.
-        ticket_id: Ticket or work-item identifier (e.g. OMN-2024).
+        ticket_id: Ticket or work-item identifier (e.g. internal issue).
         repo_id: Repository identifier (e.g. omnibase_spi).
         toolchain: Toolchain used for execution (e.g. poetry, npm).
         strictness: Strictness level (e.g. strict, lenient, default).
@@ -43,13 +43,13 @@ class ContractMeasurementContext(BaseModel):
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
-    schema_version: str = Field(
+    schema_version: str = Field(  # string-version-ok: wire format
         default="1.0",
         description="Wire-format version for forward compatibility.",
     )
     ticket_id: str = Field(
         ...,
-        description="Ticket or work-item identifier (e.g. OMN-2024).",
+        description="Ticket or work-item identifier (e.g. internal issue).",
     )
     repo_id: str = Field(
         default="",

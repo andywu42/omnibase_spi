@@ -361,7 +361,7 @@ from omnibase_spi.protocols.onex import (
     ProtocolVersionLoader,
 )
 
-# PrimitiveEffectExecutor SPI - typed kernel-level HTTP and Kafka dispatch (OMN-4220)
+# PrimitiveEffectExecutor SPI - typed kernel-level HTTP and Kafka dispatch (internal issue)
 # Zero upstream deps; contracts expressed via typing.Protocol structural subtyping.
 from omnibase_spi.protocols.primitive_effect_executor import (
     ProtocolHttpRequestContract,
@@ -399,9 +399,16 @@ from omnibase_spi.protocols.registry import (
     ProtocolProviderRegistry,
 )
 
-# Runtime protocols - Domain plugin lifecycle management
+# Runtime protocols - Domain plugin lifecycle management + handler resolver
 # ModelDomainPluginConfig and ModelDomainPluginResult live in omnibase_core.models.runtime.
 from omnibase_spi.protocols.runtime.protocol_domain_plugin import ProtocolDomainPlugin
+from omnibase_spi.protocols.runtime.protocol_handleable import ProtocolHandleable
+from omnibase_spi.protocols.runtime.protocol_handler_ownership_query import (
+    ProtocolHandlerOwnershipQuery,
+)
+from omnibase_spi.protocols.runtime.protocol_handler_resolver import (
+    ProtocolHandlerResolver,
+)
 
 # Schema protocols (2 protocols) - Schema loading and validation
 from omnibase_spi.protocols.schema import (
@@ -580,13 +587,16 @@ __all__ = [
     "ProtocolFileProcessingTypeHandler",
     "ProtocolFileReader",
     "ProtocolGraphDatabaseHandler",
+    "ProtocolHandleable",
     "ProtocolHandler",
     "ProtocolHandlerBehaviorDescriptor",
     "ProtocolHandlerContract",
     "ProtocolHandlerContractFactory",
     "ProtocolHandlerDiscovery",
     "ProtocolHandlerInfo",
+    "ProtocolHandlerOwnershipQuery",
     "ProtocolHandlerRegistry",
+    "ProtocolHandlerResolver",
     "ProtocolHandlerSource",
     "ProtocolHealthDetails",
     "ProtocolHealthMonitor",

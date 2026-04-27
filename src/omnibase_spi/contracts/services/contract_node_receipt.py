@@ -20,12 +20,14 @@ class ProtocolNodeReceipt(BaseModel):
     A receipt with ``status='failure'`` MUST carry a non-None ``error_type``.
     An empty ``{}`` receipt does not satisfy DoD validation.
 
-    Fields align with Amendment A1 of OMN-8748/OMN-8737.
+    Fields align with Amendment A1 of internal issue/internal issue.
     """
 
     model_config = {"frozen": True, "extra": "allow"}
 
-    schema_version: str = Field(default=_SCHEMA_VERSION)
+    schema_version: str = Field(
+        default=_SCHEMA_VERSION
+    )  # string-version-ok: wire format
     node_id: str
     correlation_id: UUID
     action_taken: str

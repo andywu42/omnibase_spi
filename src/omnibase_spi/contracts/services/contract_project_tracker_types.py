@@ -21,7 +21,9 @@ class ModelComment(BaseModel):
 
     model_config = {"frozen": True, "extra": "allow"}
 
-    schema_version: str = Field(default=_SCHEMA_VERSION)
+    schema_version: str = Field(
+        default=_SCHEMA_VERSION
+    )  # string-version-ok: wire format
     id: str
     body: str
     author: str
@@ -31,7 +33,7 @@ class ModelComment(BaseModel):
 class ModelIssue(BaseModel):
     """Issue/ticket data from a project tracker.
 
-    ``identifier`` is the human-readable ticket ID (e.g. "OMN-1234"),
+    ``identifier`` is the human-readable ticket ID (e.g. "internal issue"),
     ``id`` is the internal UUID used by the provider.
     """
 
